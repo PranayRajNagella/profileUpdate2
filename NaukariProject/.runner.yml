@@ -1,0 +1,14 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    docker build -t your-gui-selenium-image .
+  displayName: 'Build GUI Selenium Docker Image'
+
+- script: |
+    docker run -p 5901:5900 your-gui-selenium-image
+  displayName: 'Run GUI Selenium Docker Image'
